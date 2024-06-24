@@ -1,0 +1,29 @@
+{
+    "firstname": "Jane",
+    "lastname": "Smith",
+    "email": "jane.smith1@example.com",
+    "password_hash": "Hased1234Password!",
+    "address": {
+        "street": "456 Oak Avenue",
+        "city": "Metropolis",
+        "state": "NY",
+        "zip": "10001",
+        "country": "USA"
+    },
+    "phone": "+1-555-5678",
+    "payment_methods": [
+                {
+                    "type": "Credit Card",
+                    "provider": "Visa",
+                    "card_number": "4111 1111 1111 1111",
+                    "expiry": "12/25",
+                    "cvv": "123",
+                    "billing_address": {
+                        "street": "123 Elm Street",
+                        "city": "Springfield",
+                        "state": "IL",
+                        "zip": "62704",
+                        "country": "USA"
+                    }
+                }]
+}
