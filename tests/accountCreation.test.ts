@@ -2,7 +2,7 @@ import { test, expect } from "../base/baseFixture";
 import * as testData from "../test-data/testData.json"
 
 
-test.skip('Create account succesful', async ({ page, createAccountPage, homePage }) => {
+test('Create account succesful', async ({ page, createAccountPage, homePage }) => {
     await page.goto('https://magento.softwaretestingboard.com/#');
     await homePage.clickCreateAccount();
     await createAccountPage.enterFirstName(testData.firstname);

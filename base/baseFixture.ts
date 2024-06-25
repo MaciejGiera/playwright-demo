@@ -3,12 +3,14 @@ import HomePage from "../pages/homePage";
 import CreateAccountPage from "../pages/createAccountPage";
 import AccountPage from "../pages/accountPage";
 import SignInPage from "../pages/signInPage";
+import WhatsNewPage from "../pages/whatsNewPage";
 
 type pages = {
     homePage: HomePage,
     createAccountPage: CreateAccountPage,
     accountPage: AccountPage,
-    signInPage: SignInPage
+    signInPage: SignInPage,
+    whatsNewPage: WhatsNewPage,
 }
 
 const testPages = baseTest.extend<pages>({
@@ -25,6 +27,10 @@ const testPages = baseTest.extend<pages>({
 
     signInPage: async({page}, use) => {
         await use(new SignInPage(page))
+    },
+    
+    whatsNewPage: async({page}, use) => {
+        await use(new WhatsNewPage(page))
     }
 
 })

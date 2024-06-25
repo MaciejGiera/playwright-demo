@@ -3,21 +3,22 @@ import { test, expect } from "../base/baseFixture"
 import SignInPage from "../pages/signInPage";
 import * as testData from "../test-data/testData.json"
 import AccountPage from "../pages/accountPage";
+import { signOut, login } from "../utils/commonFunctions";
 
 
 
 test.only('login succesful', async ({ page, signInPage }) => {
-    await login(page, signInPage);
+    await login(page, signInPage, testData.email, testData.password_hash);
 })
 
 test('Sign out', async ({ page, signInPage, accountPage }) => {
-    await login(page, signInPage);
+    await login(page, signInPage, testData.email, testData.password_hash);
     await signOut(accountPage, page);
 
 })
 
 test('Account page navigation', async ({ page, accountPage, signInPage }) => {
-    await login(page, signInPage);
+    await login(page, signInPage, testData.email, testData.password_hash);
     await accountPage.clickExpandMenu();
     await accountPage.clickMyAccountExpanded();
     await accountPage.clickMyOrders();
@@ -27,7 +28,7 @@ test('Account page navigation', async ({ page, accountPage, signInPage }) => {
 })
 
 test('Expanded menu', async ({ page, accountPage, signInPage }) => {
-    await login(page, signInPage);
+    await login(page, signInPage, testData.email, testData.password_hash);
     await accountPage.clickExpandMenu();
     await accountPage.clickMyAccountExpanded();
     await accountPage.clickExpandMenu();
@@ -36,17 +37,33 @@ test('Expanded menu', async ({ page, accountPage, signInPage }) => {
     await accountPage.clickSignOutExpanded();
 })
 
+test('Whats New Page Woman navigation', async ({ page, whatsNewPage }) => {
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickWomenHoodiesSweatshirts();
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickWomenJackets();
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickWomanTees();
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickWomenBrasTanks();
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickWomenPants();
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickWomanShorts();
 
-async function signOut(accountPage: AccountPage, page: Page) {
-    await accountPage.clickExpandMenu();
-    await accountPage.clickSignOutExpanded();
-    await expect(page).toHaveURL("https://magento.softwaretestingboard.com/", { timeout: 10000 });
-}
+})
 
-async function login(page: Page, signInPage: SignInPage) {
-    await page.goto('https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/');
-    await signInPage.enterEmail(testData.email);
-    await signInPage.enterPassword(testData.password_hash);
-    await signInPage.clickSignIn();
-    await expect(page).toHaveURL("https://magento.softwaretestingboard.com/");
-}
+test('Whats New Page Men navigation', async ({ page, whatsNewPage }) => {
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickMenHoodiesSweatshirts();
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickMenJackets();
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickMenTees();
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickMenTanks();
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickMenPants();
+    await whatsNewPage.gotoWhatsNewPage();
+    await whatsNewPage.clickMenShorts();
+})

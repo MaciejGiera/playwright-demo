@@ -3,6 +3,32 @@ import { Page } from "@playwright/test";
 export default class AccountPage {
     constructor(public page: Page){}
 
+    
+    async clickExpandMenu(){
+        await this.page.locator("button[class='action switch']").nth(0).click()
+    }
+
+    async clickSignOutExpanded(){
+        await Promise.all([
+            this.page.waitForURL("https://magento.softwaretestingboard.com/customer/account/logoutSuccess/"),
+            this.page.getByText("Sign Out").nth(0).click()
+        ])
+    }
+
+    async clickMyWishListExpanded(){
+        await Promise.all([
+            this.page.waitForURL("https://magento.softwaretestingboard.com/wishlist/"),
+            this.page.getByText("My Wish List").nth(0).click()
+        ])
+    }
+
+    async clickMyAccountExpanded(){
+        await Promise.all([
+            this.page.waitForURL("https://magento.softwaretestingboard.com/customer/account/"),
+            this.page.getByText("My Account").nth(0).click()
+        ])
+    }
+    
     async clickEditContactInformation(){
         await Promise.all([
             this.page.waitForURL("https://magento.softwaretestingboard.com/customer/account/edit/"),
@@ -28,31 +54,6 @@ export default class AccountPage {
         await Promise.all([
             this.page.waitForURL("https://magento.softwaretestingboard.com/customer/address/new/"),
             this.page.click("//span[text()='Manage Addresses']")
-        ])
-    }
-
-    async clickExpandMenu(){
-        await this.page.locator("button[class='action switch']").nth(0).click()
-    }
-
-    async clickSignOutExpanded(){
-        await Promise.all([
-            this.page.waitForURL("https://magento.softwaretestingboard.com/customer/account/logoutSuccess/"),
-            this.page.getByText("Sign Out").nth(0).click()
-        ])
-    }
-
-    async clickMyWishListExpanded(){
-        await Promise.all([
-            this.page.waitForURL("https://magento.softwaretestingboard.com/wishlist/"),
-            this.page.getByText("My Wish List").nth(0).click()
-        ])
-    }
-
-    async clickMyAccountExpanded(){
-        await Promise.all([
-            this.page.waitForURL("https://magento.softwaretestingboard.com/customer/account/"),
-            this.page.getByText("My Account").nth(0).click()
         ])
     }
     
