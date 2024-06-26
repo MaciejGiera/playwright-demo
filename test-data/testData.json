@@ -1,14 +1,14 @@
 {
     "firstname": "Jane",
     "lastname": "Smith",
-    "email": "jane.smith1@example.com",
+    "email": "jane.smith2@example.com",
     "password_hash": "Hased1234Password!",
     "address": {
         "street": "456 Oak Avenue",
         "city": "Metropolis",
-        "state": "NY",
+        "state": "New York",
         "zip": "10001",
-        "country": "USA"
+        "country": "United States"
     },
     "phone": "+1-555-5678",
     "payment_methods": [
